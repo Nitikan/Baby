@@ -18,6 +18,8 @@ public class GameScreen extends ScreenAdapter{
 	@Override
 	public void render(float delta) {
 	    SpriteBatch batch = babysisterGame.batch;
+	    Gdx.gl.glClearColor(210/255f, 239/255f, 255/255f, 1);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 	    batch.begin();
 	    batch.draw(babysisterImg, 440, 350);
 	    batch.end();
