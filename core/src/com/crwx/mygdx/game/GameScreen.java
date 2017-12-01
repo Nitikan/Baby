@@ -15,7 +15,8 @@ public class GameScreen extends ScreenAdapter{
 	private Texture beeImg;
 	private Texture centipedeImg;
 	private Texture cockroachImg;
-	
+	private int x; // adapt here from this point
+	private int y;
 	 
 	public GameScreen(BabySisterGame babysisterGame) {
 	        this.babysisterGame = babysisterGame;
@@ -26,7 +27,9 @@ public class GameScreen extends ScreenAdapter{
 	        beeImg = new Texture("bee.png");
 	        centipedeImg = new Texture("centipede.png");
 	        cockroachImg = new Texture("cockroach.png");
-	 }
+	        x = 100; //adapt here from this point
+	        y = 100; 
+	}
 
 	@Override
 	public void render(float delta) {
@@ -36,11 +39,13 @@ public class GameScreen extends ScreenAdapter{
 	    batch.begin();
 	    batch.draw(babyImg, 440, 350);
 	    batch.draw(handImg, 200, 150);
-	    batch.draw(antImg, 750, 100);
-	    batch.draw(spiderImg, 790, 380);
-	    batch.draw(beeImg, 400, 650);
-	    batch.draw(centipedeImg, 100, 600);
-	    batch.draw(cockroachImg, 750, 580);
+	    batch.draw(antImg, 750, x);
+	    batch.draw(spiderImg, y+x, 380);
+	    batch.draw(beeImg, y, x);
+	    batch.draw(centipedeImg, 100, x);
+	    batch.draw(cockroachImg, x, y);
 	    batch.end();
+	    y +=  5;
+	    x +=  2; // adapt here from this point
 	}
 }
