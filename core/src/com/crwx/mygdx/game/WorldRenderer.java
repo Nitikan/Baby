@@ -13,15 +13,18 @@ public class WorldRenderer {
 	private BabySisterGame babysisterGame;
 	private World world;
 	private Texture babyImg;
+	private Texture handImg;
 	private List<Texture> insectsImg;
 	private List<Texture> randomInsect;
 	SpriteBatch batch;
-
+	
+	
 	public WorldRenderer(BabySisterGame babysisterGame, World world) {
 		batch = babysisterGame.batch; 
 		this.babysisterGame = babysisterGame;
 	    this.world = world;	 
 	    babyImg = new Texture("baby.png");
+	    handImg = new Texture("hand.png");
 	    insectsImg = new ArrayList();
 	    randomInsect = new ArrayList();
 	    randomInsect.add(new Texture("ant.png"));
@@ -41,11 +44,13 @@ public class WorldRenderer {
 	public void render(float delta) {
 		batch = babysisterGame.batch;
 	    batch.begin();
-        batch.draw(babyImg, world.getBabysister().getPosition().x, world.getBabysister().getPosition().y);
+	    batch.draw(babyImg, world.getBabysister().getPosition().x,world.getBabysister().getPosition().y);
+        batch.draw(handImg, world.cursorx-50, world.cursory+750);
         for(int i =0;i<world.getInsects().size();i++)
         	batch.draw(insectsImg.get(i), world.getInsects().get(i).getPosition().x, world.getInsects().get(i).getPosition().y);
+   
         batch.end();
-		
+	
 		}
 	}
 
