@@ -29,8 +29,9 @@ public class WorldRenderer {
 	    randomInsect.add(new Texture("bee.png"));
 	    randomInsect.add(new Texture("centipede.png"));
 	    randomInsect.add(new Texture("cockroach.png"));
+	    
 	    Random random = new Random();
-	    for(int i=0 ; i<10 ; i++) 
+	    for(int i=0;i<10;i++) 
 	    {
 	    	int tmp = random.nextInt(5);
 	    	insectsImg.add(randomInsect.get(tmp));

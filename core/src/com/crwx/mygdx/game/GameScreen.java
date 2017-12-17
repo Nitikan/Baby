@@ -31,6 +31,7 @@ public class GameScreen extends ScreenAdapter{
 	
 	private void update(float delta) {
 		world.getBabysister().update();
+		world.update(delta);
 	}
 	
 	@Override
