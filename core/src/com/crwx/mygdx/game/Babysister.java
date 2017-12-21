@@ -15,15 +15,20 @@ public class Babysister {
 		return position;}
 	
 	public void update() {
-		 if(Gdx.input.isKeyPressed(Keys.LEFT)) {
-			position.x -= 10;}
-		if(Gdx.input.isKeyPressed(Keys.RIGHT)) {
-			position.x += 10;}
-		if(Gdx.input.isKeyPressed(Keys.UP)) {
-			position.y += 10;}
-		if(Gdx.input.isKeyPressed(Keys.DOWN)) {
-			position.y -= 10;}
+		if(position.x <= 600)
+		{
+			
 		}
+	}
+	
+	public void Move_Left() {
+		position.x -= 10;}
+	public void Move_Right() {
+		position.x += 10;}
+	public void Move_Up() {
+		position.y += 10;}
+	public void Left() {
+		position.y -= 10;}
 	}
 	
 

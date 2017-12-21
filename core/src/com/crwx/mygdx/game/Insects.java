@@ -6,6 +6,7 @@ import java.util.Random;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
 public class Insects {
@@ -17,6 +18,7 @@ public class Insects {
 	private int speed;
 	private List<Integer> posy;
 	private List<Integer>posx;
+	private Rectangle rec;
 	public Insects(Integer dir) {
 		Random random = new Random();
 		posy = new ArrayList();
@@ -48,10 +50,14 @@ public class Insects {
 		}
 		speed = random.nextInt(5)+10;
 		position = new Vector2(x,y);
+		rec = new Rectangle(position.x,position.y,100,100);
 	}
-
-
-
+	public int getDir() {
+		return dir;
+	}
+	public  Rectangle getRec() {
+		return rec;
+	}
 	public Vector2 getPosition(){
 		
 		return position;}
@@ -70,5 +76,6 @@ public class Insects {
 		else if(dir == 3) { //buttom
 			position.y +=speed;
 		}
+		rec.setPosition(position.x+50,position.y+50);
 	}
 }
