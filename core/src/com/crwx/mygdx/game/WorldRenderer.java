@@ -117,12 +117,12 @@ public class WorldRenderer {
 	    }
 	    else if (world.status == 1) { 
 		    batch.draw(babyImg, world.getBabysister().getPosition().x,world.getBabysister().getPosition().y);
-		    for(int i =0;i<world.getInsects().size();i++)
+		    for(int i =0;i<world.getInsects().size();i++) {
 		    if(world.listInsects.get(i)!=null) {
-	        	batch.draw(insectsImg.get(i), world.getInsects().get(i).getPosition().x, world.getInsects().get(i).getPosition().y);
+		    	batch.draw(insectsImg.get(i), world.getInsects().get(i).getPosition().x, world.getInsects().get(i).getPosition().y);}}
 	        batch.draw(handImg, world.cursorx-50, world.cursory+750);
 	        font.draw(batch, "" + world.getScore(), 870, 770);
-	    }}
+	    }
 	    else if (world.status == 2) {
 	    	batch.draw(overImg,0,0);
 	    }

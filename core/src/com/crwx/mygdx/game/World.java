@@ -51,19 +51,18 @@ public class World {
 		if(status == 1) {
 			cursorx = Gdx.input.getX();
 			cursory = -Gdx.input.getY();
-			recMouse.setPosition(cursorx+9,cursory+18);
-			for (Insects object: listInsects) {
-				if(object != null) {
-				object.update();
-				if(Intersector.overlaps(recMouse,object.getRec())) {
+			recMouse.setPosition(cursorx+9,-cursory+18);
+			for (int i=0;i<4;i++) {
+				if(listInsects.get(i) != null) {
+					listInsects.get(i).update();
+				if(Intersector.overlaps(recMouse,listInsects.get(i).getRec())) {
 					System.out.println("hit");
 					//if (Gdx.input.isButtonPressed(Input.Buttons.LEFT))
-					object = null;
-					System.out.println("jj");
-					status = 2;
+					listInsects.add(i,null);
+					System.out.println("haha");
 					break;
 					}
-				if(Intersector.overlaps(babysister.rectangle,object.getRec())) {
+				if(Intersector.overlaps(babysister.rectangle,listInsects.get(i).getRec())) {
 				//	status = 2;
 				}
 			}
