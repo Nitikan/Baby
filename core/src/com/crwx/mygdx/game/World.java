@@ -36,6 +36,7 @@ public class World {
 				if(Intersector.overlaps(recMouse,listInsects.get(i).getRec())) {
 					if (Gdx.input.isButtonPressed(Input.Buttons.LEFT)) {
 					listInsects.get(i).setDir(4);
+					score += 5;
 					continue;}
 					}
 				if(Intersector.overlaps(baby.rectangle,listInsects.get(i).getRec())) {
@@ -62,7 +63,7 @@ public class World {
 		return listInsects;
 	}
 	
-	public int getScore() {
+	public int getScore() {	
 		return score;
 	}
 	

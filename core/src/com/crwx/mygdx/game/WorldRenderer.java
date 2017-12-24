@@ -128,6 +128,7 @@ public class WorldRenderer {
 	    }
 	    else if (world.status == 2) {
 	    	batch.draw(overImg,0,0);
+	    	font.draw(batch, "" + world.getScore(), 580, 275);
 	    }
         batch.end();
 	
