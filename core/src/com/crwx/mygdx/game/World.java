@@ -50,20 +50,20 @@ public class World {
 		if(status == 1) {
 			cursorx = Gdx.input.getX();
 			cursory = -Gdx.input.getY();
-			recMouse.setPosition(cursorx+9,cursory+18);
+			recMouse.setPosition(Gdx.input.getX()+9,Gdx.input.getY()+18);
 			for(int i = 0;i<listInsects.size();i++) {
 				listInsects.get(i).update();
 				if(Intersector.overlaps(recMouse,listInsects.get(i).getRec())) {
 					System.out.println("hit"+i);
-					//status = 0;
 					}
 				if(Intersector.overlaps(babysister.rectangle,listInsects.get(i).getRec())){
-					status = 2;
+				//	status = 2;
 				}
 			}
 		}
 		if (status == 2) {
 			if(Gdx.input.isKeyJustPressed(Keys.ENTER)) {
+				clearScreen();
 				status = 0;}
 		}
 		else if(status == 0) {
@@ -81,5 +81,12 @@ public class World {
 	}
 	public int getScore() {
 		return score;
+	}
+	private void clearScreen() {
+		for (int i=0;i<4;i++) 
+		{
+			if( listInsects.get(i) != null) {
+				}
+		}
 	}
 }
