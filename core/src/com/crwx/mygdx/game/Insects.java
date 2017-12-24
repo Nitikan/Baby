@@ -78,6 +78,6 @@ public class Insects {
 		else if(dir == 3) { //buttom
 			position.y +=speed;
 		}
-		rec.setPosition(position.x+50,position.y+50);
+		rec.setPosition(position.x,position.y);
 	}
 }

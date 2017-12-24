@@ -43,21 +43,23 @@ public class World {
 			insects = new Insects((Integer) direction.get(tmp));
 			listInsects.add(insects);
 		}
-		recMouse = new Rectangle(cursorx,cursory,100,100);
+		recMouse = new Rectangle(cursorx,cursory,78,67);
 		
 	}
 	public void update(float delta) {
 		if(status == 1) {
+			System.out.println("Baby rec");
 			System.out.println(babysister.rectangle);
 			cursorx = Gdx.input.getX();
 			cursory = -Gdx.input.getY();
-			recMouse.setPosition(cursorx+50,cursory+50);
+			recMouse.setPosition(cursorx+9,cursory+18);
 			for(int i = 0;i<listInsects.size();i++) {
 				listInsects.get(i).update();
 				if(recMouse.overlaps(listInsects.get(i).getRec())) {
 					System.out.println("hit"+i);
 					System.out.println(listInsects.get(i).getRec());}
 				if(Intersector.overlaps(babysister.rectangle,listInsects.get(i).getRec())){
+					System.out.println("insect rec");
 					System.out.println(listInsects.get(i).getRec());
 					status = 0;
 				}
