@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Rectangle;
@@ -50,20 +51,27 @@ public class World {
 		if(status == 1) {
 			cursorx = Gdx.input.getX();
 			cursory = -Gdx.input.getY();
-			recMouse.setPosition(Gdx.input.getX()+9,Gdx.input.getY()+18);
-			for(int i = 0;i<listInsects.size();i++) {
-				listInsects.get(i).update();
-				if(Intersector.overlaps(recMouse,listInsects.get(i).getRec())) {
-					System.out.println("hit"+i);
+			recMouse.setPosition(cursorx+9,cursory+18);
+			for (Insects object: listInsects) {
+				if(object != null) {
+				object.update();
+				if(Intersector.overlaps(recMouse,object.getRec())) {
+					System.out.println("hit");
+					//if (Gdx.input.isButtonPressed(Input.Buttons.LEFT))
+					object = null;
+					System.out.println("jj");
+					status = 2;
+					break;
 					}
-				if(Intersector.overlaps(babysister.rectangle,listInsects.get(i).getRec())){
+				if(Intersector.overlaps(babysister.rectangle,object.getRec())) {
 				//	status = 2;
 				}
+			}
 			}
 		}
 		if (status == 2) {
 			if(Gdx.input.isKeyJustPressed(Keys.ENTER)) {
-				clearScreen();
+				//clearScreen();
 				status = 0;}
 		}
 		else if(status == 0) {
@@ -83,10 +91,5 @@ public class World {
 		return score;
 	}
 	private void clearScreen() {
-		for (int i=0;i<4;i++) 
-		{
-			if( listInsects.get(i) != null) {
-				}
-		}
 	}
 }

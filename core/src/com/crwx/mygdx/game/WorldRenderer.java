@@ -56,7 +56,8 @@ public class WorldRenderer {
 	}
 	private void update() {
 		for(int i = 0;i<world.listInsects.size();i++) {
-	    	int tmp = random.nextInt(world.direction.size());
+	    	if(world.listInsects.get(i)!=null) {
+			int tmp = random.nextInt(world.direction.size());
 	    	Insects insects = new Insects((Integer) world.direction.get(tmp));
 			//listInsects.add(insects);
 	    	if(world.listInsects.get(i).getDir() == 0) {
@@ -106,6 +107,7 @@ public class WorldRenderer {
 	    	}
 		}
 	}
+	}
 	public void render(float delta) {
 		update();
 		batch = babysisterGame.batch;
@@ -113,13 +115,14 @@ public class WorldRenderer {
 	    if(world.status == 0){ 
 	    	batch.draw(startImg,0,0);
 	    }
-	    else if (world.status == 1) {    	
+	    else if (world.status == 1) { 
 		    batch.draw(babyImg, world.getBabysister().getPosition().x,world.getBabysister().getPosition().y);
-	        for(int i =0;i<world.getInsects().size();i++)
+		    for(int i =0;i<world.getInsects().size();i++)
+		    if(world.listInsects.get(i)!=null) {
 	        	batch.draw(insectsImg.get(i), world.getInsects().get(i).getPosition().x, world.getInsects().get(i).getPosition().y);
 	        batch.draw(handImg, world.cursorx-50, world.cursory+750);
 	        font.draw(batch, "" + world.getScore(), 870, 770);
-	    }
+	    }}
 	    else if (world.status == 2) {
 	    	batch.draw(overImg,0,0);
 	    }
