@@ -3,12 +3,10 @@ package com.crwx.mygdx.game;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Vector2;
 
 public class WorldRenderer {
 	
@@ -56,7 +54,7 @@ public class WorldRenderer {
 	}
 	private void update() {
 		for(int i = 0;i<world.listInsects.size();i++) {
-	    	if(world.listInsects.get(i)!=null) {
+	    	{
 			int tmp = random.nextInt(world.direction.size());
 	    	Insects insects = new Insects((Integer) world.direction.get(tmp));
 			//listInsects.add(insects);
@@ -105,8 +103,13 @@ public class WorldRenderer {
 	    			
 	    		}
 	    	}
-		}
-	}
+	    	else if(world.listInsects.get(i).getDir() == 4) {
+	    			world.listInsects.remove(i);
+	    			world.listInsects.add(insects);
+	    			insectsImg.remove(i);
+	    			int tmp1 = random.nextInt(5);
+	    	    	insectsImg.add(randomInsect.get(tmp1));
+		}}}
 	}
 	public void render(float delta) {
 		update();
@@ -116,9 +119,9 @@ public class WorldRenderer {
 	    	batch.draw(startImg,0,0);
 	    }
 	    else if (world.status == 1) { 
-		    batch.draw(babyImg, world.getBabysister().getPosition().x,world.getBabysister().getPosition().y);
-		    for(int i =0;i<world.getInsects().size();i++) {
-		    if(world.listInsects.get(i)!=null) {
+		    batch.draw(babyImg, world.getBaby().getPosition().x,world.getBaby().getPosition().y);
+		    for(int i =0;i<world.listInsects.size();i++) {
+		    {
 		    	batch.draw(insectsImg.get(i), world.getInsects().get(i).getPosition().x, world.getInsects().get(i).getPosition().y);}}
 	        batch.draw(handImg, world.cursorx-50, world.cursory+750);
 	        font.draw(batch, "" + world.getScore(), 870, 770);
