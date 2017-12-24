@@ -8,7 +8,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class BabySisterGame extends Game {
-	SpriteBatch batch;
+	public SpriteBatch batch;
 
 	@Override
 	public void create () {
@@ -16,6 +16,11 @@ public class BabySisterGame extends Game {
 		setScreen(new GameScreen(this));
 	}
 
+	@Override
+	public void render () {
+		super.render();
+	}
+	
 	@Override
 	public void dispose () {
 		batch.dispose();

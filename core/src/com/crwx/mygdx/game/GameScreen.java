@@ -19,10 +19,6 @@ public class GameScreen extends ScreenAdapter{
 	private BabySisterGame babysisterGame;
 	private WorldRenderer worldRenderer;
 	private World world;
-	
-	/*
-	private Texture handImg;
-	*/
 
 	 
 	public GameScreen(BabySisterGame babysisterGame) {
@@ -30,10 +26,6 @@ public class GameScreen extends ScreenAdapter{
 	        world = new World(babysisterGame);
 	        worldRenderer = new WorldRenderer(babysisterGame, world);
 	     
-	        /*
-	        handImg = new Texture("hand.png");
-	        */
-	        
 	}
 	
 	private void update(float delta) {
@@ -51,6 +43,5 @@ public class GameScreen extends ScreenAdapter{
         
         worldRenderer.render(delta);
         
-	   // batch.draw(handImg, 200, 150);
 	}
 }
