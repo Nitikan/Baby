@@ -16,10 +16,11 @@ public class WorldRenderer {
 	private World world;
 	private Texture babyImg;
 	private Texture handImg;
+	private Texture startImg;
+	private Texture overImg;
 	private List<Texture> insectsImg;
 	private List<Texture> randomInsect;
 	private BitmapFont font;
-	private Texture gameOverImg;
 	private BitmapFont gameOverScore;
 	private Random random;
 	SpriteBatch batch;
@@ -31,6 +32,8 @@ public class WorldRenderer {
 	    this.world = world;	 
 	    babyImg = new Texture("baby.png");
 	    handImg = new Texture("hand.png");
+	    startImg = new Texture("start.jpg");
+	    overImg = new Texture("gameover.jpg");
 	    insectsImg = new ArrayList();
 	    randomInsect = new ArrayList();
 	    randomInsect.add(new Texture("ant.png"));
@@ -107,11 +110,19 @@ public class WorldRenderer {
 		update();
 		batch = babysisterGame.batch;
 	    batch.begin();
-	    batch.draw(babyImg, world.getBabysister().getPosition().x,world.getBabysister().getPosition().y);
-        for(int i =0;i<world.getInsects().size();i++)
-        	batch.draw(insectsImg.get(i), world.getInsects().get(i).getPosition().x, world.getInsects().get(i).getPosition().y);
-        batch.draw(handImg, world.cursorx-50, world.cursory+750);
-        font.draw(batch, "" + world.getScore(), 870, 770);
+	    if(world.status == 0){ 
+	    	batch.draw(startImg,0,0);
+	    }
+	    else if (world.status == 1) {    	
+		    batch.draw(babyImg, world.getBabysister().getPosition().x,world.getBabysister().getPosition().y);
+	        for(int i =0;i<world.getInsects().size();i++)
+	        	batch.draw(insectsImg.get(i), world.getInsects().get(i).getPosition().x, world.getInsects().get(i).getPosition().y);
+	        batch.draw(handImg, world.cursorx-50, world.cursory+750);
+	        font.draw(batch, "" + world.getScore(), 870, 770);
+	    }
+	    else if (world.status == 2) {
+	    	batch.draw(overImg,0,0);
+	    }
         batch.end();
 	
 		}

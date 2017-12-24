@@ -20,7 +20,7 @@ public class World {
 	public int  cursory;
 	private Random random;
 	private Rectangle recMouse;
-	private int status = 0; // 0start 1game 2score
+	public int status = 0; // 0start 1game 2score
 	
 	
 	public World(BabySisterGame babysisterGame)
@@ -48,20 +48,17 @@ public class World {
 	}
 	public void update(float delta) {
 		if(status == 1) {
-			System.out.println("Baby rec");
-			System.out.println(babysister.rectangle);
 			cursorx = Gdx.input.getX();
 			cursory = -Gdx.input.getY();
 			recMouse.setPosition(cursorx+9,cursory+18);
 			for(int i = 0;i<listInsects.size();i++) {
 				listInsects.get(i).update();
-				if(recMouse.overlaps(listInsects.get(i).getRec())) {
+				if(Intersector.overlaps(recMouse,listInsects.get(i).getRec())) {
 					System.out.println("hit"+i);
-					System.out.println(listInsects.get(i).getRec());}
+					//status = 0;
+					}
 				if(Intersector.overlaps(babysister.rectangle,listInsects.get(i).getRec())){
-					System.out.println("insect rec");
-					System.out.println(listInsects.get(i).getRec());
-					status = 0;
+					status = 2;
 				}
 			}
 		}
