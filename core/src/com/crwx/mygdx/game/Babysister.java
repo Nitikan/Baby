@@ -8,8 +8,8 @@ import com.badlogic.gdx.math.Vector2;
 
 public class Babysister {
 	private Vector2 position;
-	public final int WIDTH = 35;
-	public final int HEIGH = 35;
+	public final int WIDTH = 128;
+	public final int HEIGH = 128;
 	public Rectangle rectangle;
 	public Babysister(int x,int y) {
 		position = new Vector2(x,y);

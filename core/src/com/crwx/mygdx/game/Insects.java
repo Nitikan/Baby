@@ -11,6 +11,8 @@ import com.badlogic.gdx.math.Vector2;
 
 public class Insects {
 	
+	public final int WIDTH = 64;
+	public final int HEIGH = 64;
 	private Vector2 position;
 	private int dir;
 	private int x;
@@ -50,7 +52,7 @@ public class Insects {
 		}
 		speed = random.nextInt(5)+10;
 		position = new Vector2(x,y);
-		rec = new Rectangle(position.x,position.y,100,100);
+		rec = new Rectangle(position.x,position.y,WIDTH,HEIGH);
 	}
 	public int getDir() {
 		return dir;
