@@ -15,27 +15,48 @@ public class Baby {
 	}
 	
 	public Vector2 getPosition(){
+		
 		return position;
 	}
 	
 	public void update() {
 		rectangle.setPosition(position.x+18,position.y+20);
+		if (position.x == -100){
+			position.x = 1000;
+			position.y = 325;
+		}
+		else if (position.y == 550){
+			Move_Left();
+		}
+		else if(position.y == 500) {
+			Move_Left();
+		}
+		else if (position.x == 800){
+			Move_Up();
+		}
+		else if(position.y == 125) {
+			Move_Right();
+		}
+		else if(position.x > 120) {
+			Move_Left();
+			Move_Down();
+		}
 	}
 			
 	public void Move_Left() {
-		position.x -= 10;
+		position.x -= 1;
 	}
 	
 	public void Move_Right() {
-		position.x += 10;
+		position.x += 1;
 	}
 	
 	public void Move_Up() {
-		position.y += 10;
+		position.y += 1;
 	}
 	
-	public void Left() {
-		position.y -= 10;
+	public void Move_Down() {
+		position.y -= 1;
 	}
 }
 	

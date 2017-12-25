@@ -113,13 +113,13 @@ public class WorldRenderer {
 	    }
 	    else if (world.status == 1) { 
 	    	if (Gdx.input.isButtonPressed(Input.Buttons.LEFT)) {
-	    		 batch.draw(explosionImg,world.cursorx,-world.cursory);
+	    		 batch.draw(explosionImg,world.cursorx+11,-world.cursory+100);
 	    	}
 		    batch.draw(babyImg, world.getBaby().getPosition().x,world.getBaby().getPosition().y);
 		    for(int i =0;i<world.listInsects.size();i++) {
 		    	batch.draw(insectsImg.get(i), world.getInsects().get(i).getPosition().x, world.getInsects().get(i).getPosition().y);
 		    }
-	        batch.draw(handImg, world.cursorx-50, world.cursory+750);
+	        batch.draw(handImg, world.cursorx, -world.cursory);
 	        font.draw(batch, "" + world.getScore(), 870, 770);
 	    }
 	    else if (world.status == 2) {

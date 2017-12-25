@@ -18,7 +18,7 @@ public class World {
 	private int score;
 	public int  cursorx;
 	public int  cursory;
-	public int level = 1;
+	public int level = 3;
 	private Random random;
 	private Rectangle recMouse;
 	public int status = 0; // 0start 1game 2score
@@ -28,9 +28,6 @@ public class World {
 	}
 		
 	public void update(float delta) {
-		//if(score%20 == 0)
-		//{	level += 1;
-			System.out.println(level);
 		if(status == 1) {
 			cursorx = Gdx.input.getX();
 			cursory = -Gdx.input.getY();
@@ -41,11 +38,10 @@ public class World {
 					if (Gdx.input.isButtonPressed(Input.Buttons.LEFT)) {
 					listInsects.get(i).setDir(4);
 					score += 5;
-					System.out.println("1 : " + level);
 					continue;}
 					}
 				if(Intersector.overlaps(baby.rectangle,listInsects.get(i).getRec())) {
-					//status = 2;
+					status = 2;
 				}
 			}
 		}
@@ -56,10 +52,11 @@ public class World {
 		}
 		else if(status == 0) {
 			if(Gdx.input.isKeyJustPressed(Keys.ENTER)) {
-				status = 1;}
+				status = 1;
 				}
 			}
-	//	}
+	}
+	
 	
 	Baby getBaby() {
 		return baby;
@@ -94,7 +91,7 @@ public class World {
 			insects = new Insects((Integer) direction.get(tmp));
 			listInsects.add(insects);
 		}
-		recMouse = new Rectangle(cursorx,cursory,78,67);
+		recMouse = new Rectangle(cursorx,cursory,100,100);
 	}
 	
 	private void clearScreen() {
